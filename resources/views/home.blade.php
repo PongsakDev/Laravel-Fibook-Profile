@@ -28,13 +28,19 @@
             </div>
 
             {{-- Post Timeline --}}
-            <div class="panel panel-default">
-                <div class="panel-heading">Panel heading without title</div
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-
-            </div>
+            @foreach($posts->get() as $post)
+              <div class="panel panel-default">
+                {{-- @if($post->imageName != null)
+                  <div class="panel-heading">
+                    <img src="{{ Storage::disk('postImage')->url('filename.jpg') }}" alt="">
+                    <h3 class="panel-title">New Post</h3>
+                  </div>
+                @endif --}}
+                <div class="panel-body">
+                    {{$post->body}}
+                </div>
+              </div>
+            @endforeach
 
         </div>
     </div>
