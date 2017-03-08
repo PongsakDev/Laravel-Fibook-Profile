@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
+
         <div class="col-md-3">
             <h4>{{ Auth::user()->name }} {{ Auth::user()->surname }}</h4>
             <div class="list-group">
@@ -12,8 +13,8 @@
 
         <div class="col-md-8">
             {{-- NewPost --}}
-            <div class="panel panel-default">
-                <div class="panel-heading">
+           <div class="panel panel-default">
+               <div class="panel-heading">
                   <div class="panel-body">
                     <form class="/post/new" method="post" enctype="multipart/form-data">
                       <div class="form-group">
@@ -30,19 +31,15 @@
             {{-- Post Timeline --}}
             @foreach($posts->get() as $post)
               <div class="panel panel-default">
-                {{-- @if($post->imageName != null)
-                  <div class="panel-heading">
-                    <img src="{{ Storage::disk('postImage')->url('filename.jpg') }}" alt="">
-                    <h3 class="panel-title">New Post</h3>
-                  </div>
-                @endif --}}
                 <div class="panel-body">
-                    {{$post->body}}
+                  <h4>{{$post->owner()->first()->name}} {{$post->owner()->first()->surname}}</h4>
+                  <p>{{$post->body}}</p>
+                  <a href="/like/{{$post->id}}"><strong>{{$post->likes}}Like(s)</strong></a>
                 </div>
               </div>
             @endforeach
-
         </div>
+
     </div>
 </div>
 @endsection
