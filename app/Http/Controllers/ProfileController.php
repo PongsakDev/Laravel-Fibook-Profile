@@ -3,38 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfileController extends Controller
 {
-    function getYear ()
-    {
-      $bYear = 1996;
-
-      return $bYear + 543;
+    public function showChangeProfileForm () {
+        return view('changeprofile');
     }
 
-    function getName ($id)
-    {
-      return getCustomers()[$id-1]['Name'];
-    }
+    public function change () {
+        $avatar = request()->file('avatar');
+        $ext = $avatar->guessClientExtension(); // $file->extension();
 
-    function getSurname ($id)
-    {
-      $customers =
-      [
-          ["Name" => 'Arnon', 'Surname' => 'Puitrakul'],
-          ["Name" => "Lewis", "Surname" => 'Gunner']
-      ];
-
-      return $customers[$id-1]['Surname'];
-    }
-
-    function getflskjf ()
-    {
-      $test1 = "Hello";
-
-      $test2 = "World";
-
-      return $test1 . " " . $test2;
+        $avatar->storeAs('avatar/' . Auth::user()->id, 'avatar.' . $ext, 'avatar');
+        return redirect('/home');
     }
 }
