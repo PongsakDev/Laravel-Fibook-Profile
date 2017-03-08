@@ -34,3 +34,10 @@ Route::get('/{id}/surname', 'ProfileController@getSurname');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/like/{id}', 'PostController@like');
+Route::get('/profile/change', 'ProfileController@showChangeProfileForm');
+Route::post('/profile/change', 'ProfileController@change');
+Route::post('/post/new', 'PostController@post');
+
+
+
