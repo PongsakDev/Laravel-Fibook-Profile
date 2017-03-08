@@ -1,0 +1,75 @@
+﻿https://github.com/arnondora/LaravelForRealWorld/blob/master/resources/views/profile.blade.php
+php artisan serve
+php artisan make:controller ProfileController
+php artisan make:controller UserController
+php artisan key:generate
+
+php artisan make:mgration create_post_table --create=Post
+php artisan migrate
+  php artisan migrate:reset // เอาใวรี Database
+php artisan make:auth
+
+php artisan make:model Post
+
+php artisan tinker
+$user = new App\User;
+$user->name = 'Pongsak';
+$user->password = bcrypt('pongsak');
+$user->dob = strtotime('1993-12-12');
+$user->save();
+Cheak => App\User::all();
+  $user = App\User::first();
+  $user->posts()
+
+npm install
+npm install --global gulp-cli
+gulp
+
+Laravel-Facebook-Profile
+
+
+<link rel="stylesheet" href="{{elixir('app.css')}}">
+@yield('content')
+@extends('template') {{-- template.blade.php --}}
+
+@section('content')
+    <h3>Hello World</h3>
+@endsection
+
+
+
+photo
+Profile
+- Name: {Pongsak J.}
+- Education: {B.Eng. (Computer Engineering)}
+-
+
+Skills
+Font End
+ - html
+ - css(Materialize, Bootstrap, ฯลฯ)
+ - Javascript(ES6, AngularJS, VueJS, ฯลฯ)
+
+Back end
+ - Firebase(Authentication, Database,Storage, Hosting)
+ - Node(RESTful API, etc)
+ - Java(Spring boot, hibernate, RESTful)
+ - DB(Mysql,...)
+ - Other
+
+ Designer/Creative
+ - Adobe Photoshop
+ - Adobe Illustrator
+ - Adobe effect
+ - Adobe Media Encoder
+ - Adobe Premiere Pro
+
+ Free Time
+ - Coding
+ - Photography
+ - Travel
+ - Cartoon(All)
+ - Music,Movie
+
+ Mobile Application
+ - Android(java)
